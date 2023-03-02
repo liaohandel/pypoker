@@ -1,0 +1,29 @@
+
+gameobj
+	[gamesn]
+	[gametype]
+	[gameuser_inx]
+	[gameplay_list]
+	
+	#cardset
+		[card_set]
+		[ctype]
+		[cardsize]
+		[cardsetflag]
+		
+		Shuffling()
+		packcount()
+		drawx1()
+		drawx5()
+		drawx13()
+	
+	#userlist[]
+		#userobj
+			#user_cardbuff
+	
+	#game_cardbuff
+	
+	
+		
+		
+	

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+
+<meta charset="utf-8">
+<h1 style="Background: Aqua">=== PyPoker GUI V1.0  20230201  ===<h1> 
+<hr>
+<form>
+	<p>Today   &   Time : <input type="text" id='dayvalue' ></p>
+</form>
+<hr>
+<style>
+  .btn {
+    width: 180px;
+    line-height: 40px;
+    font-size: 20px;
+    color: PapayaWhip;
+    text-align: center;
+    background-color: Chocolate;
+    border: 5px solid SaddleBrown;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  .btn:hover {
+    /* :hover 代表滑鼠移到元素上時的狀態 */ 
+    transform: scale(1.05);
+  }
+  .btn:active {
+    /* :active是滑鼠點擊元素的狀態 */
+    transform: scale(1);
+    box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, .2);
+  } 
+</style>
+<div>
+	<input type="button" value=" START " id='k1' class="btn" onclick="show1()" >
+	<input type="button" value=" show  " id='k2' class="btn" onclick="showpoker()" ><br>
+</div>
+<hr>
+<h2>POKER Image</h2><hr>
+<h2>u1:<canvas id="myCanvas1"  width="620" height="120"></canvas> D1:<canvas id="myCanvas11"  width="320" height="120"></canvas></h2><hr>
+<h2>u2:<canvas id="myCanvas2"  width="620" height="120"></canvas> D2:<canvas id="myCanvas12"  width="320" height="120"></canvas></h2><hr>
+<h2>u3:<canvas id="myCanvas3"  width="620" height="120"></canvas> D3:<canvas id="myCanvas13"  width="320" height="120"></canvas></h2><hr>
+<h2>u4:<canvas id="myCanvas4"  width="620" height="120"></canvas> D4:<canvas id="myCanvas14"  width="320" height="120"></canvas></h2><hr>
+
+<script>
+	//const canvas = document.createElement('canvas')
+	var canvas1 = document.getElementById('myCanvas1');
+	var ctx1 = canvas1.getContext('2d');
+	//card 120x180
+	var canvas2 = document.getElementById('myCanvas2');
+	var ctx2 = canvas2.getContext('2d');
+	
+	var canvas3 = document.getElementById('myCanvas3');
+	var ctx3 = canvas3.getContext('2d');
+	
+	var canvas4 = document.getElementById('myCanvas4');
+	var ctx4 = canvas4.getContext('2d');
+
+	var canvas11 = document.getElementById('myCanvas11');
+	var ctx11 = canvas11.getContext('2d');
+	//card 120x180
+	var canvas12 = document.getElementById('myCanvas12');
+	var ctx12 = canvas12.getContext('2d');
+	
+	var canvas13 = document.getElementById('myCanvas13');
+	var ctx13 = canvas13.getContext('2d');
+	
+	var canvas14 = document.getElementById('myCanvas14');
+	var ctx14 = canvas14.getContext('2d');
+	
+	var cardimage =[]
+	var cardtype = ["rh","rd","bf","bh"]
+	var cardnumber = ["01","02","03","04","05","06","07","08","09","10","11","12","13"]
+	var cardjk =["jkpk","ovpk"]
+	var  card_set = [    
+	    0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,
+	    0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d,
+	    0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,0x29,0x2a,0x2b,0x2c,0x2d,
+	    0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39,0x3a,0x3b,0x3c,0x3d,
+	    0x0e,0x1e,0x00]
+	var had1 = ['0x05', '0x13', '0x3A', '0x0B', '0x01', '0x18', '0x23', '0x2C', '0x0A', '0x1C', '0x1B', '0x24', '0x12']
+	var had2 = ['0x06', '0x31', '0x37', '0x07', '0x09', '0x3B', '0x16', '0x14', '0x22', '0x34', '0x25', '0x33', '0x03']
+	var had3 = ['0x15', '0x17', '0x21', '0x2D', '0x2A', '0x02', '0x08', '0x3D', '0x04', '0x2B', '0x26', '0x36', '0x0C']
+	var had4 = ['0x11', '0x19', '0x1A', '0x38', '0x35', '0x29', '0x39', '0x3C', '0x32', '0x27', '0x0D', '0x1D', '0x28']
+	
+	var had1show=[0,0,0,0,0,0,0,0,0,0,0,0,0]
+	var had2show=[0,0,0,0,0,0,0,0,0,0,0,2,2]
+	var had3show=[0,0,0,0,0,0,0,0,0,0,0,0,0]
+	var had4show=[0,0,0,0,0,0,0,0,0,0,0,0,0]
+	
+	var had11 = ['0x14', '0x12', '0x0C', '0x2C', '0x07']
+	var had12 = ['0x32', '0x36', '0x1A', '0x0D', '0x02']
+	var had13 = ['0x06', '0x27', '0x28', '0x1B', '0x11']
+	var had14 = ['0x04', '0x1C', '0x21', '0x19', '0x3D']
+	var had11show=[0,0,1,0,0]
+	var had12show=[0,0,0,1,0]
+	var had13show=[0,1,0,0,0]
+	var had14show=[1,0,0,0,0]
+	//parseInt('0x14', 16)
+	
+	function loadcardimage() {
+		let loadcnt=0
+		let imname=""
+		//for(let i=0;i<53;i++){
+		//	var imgObject = ;
+		//	cardimage.push(imgObject);
+		//}
+		
+		for(mk in cardtype){
+			for(nb in cardnumber){
+				imname="./bin/"+cardtype[mk]+cardnumber[nb]+".gif"
+				
+				//var imgObject = new Image();
+				cardimage.push(new Image());
+				cardimage[loadcnt].src = imname;
+				console.log(loadcnt,imname);
+				//cardimage[loadcnt].onload = function(){
+				//	console.log("load ok>>",loadcnt,imname);
+				//}
+				//cardimage[loadcnt].src = imname;
+				loadcnt++;
+			}
+		}
+		cardimage.push(new Image());
+		cardimage[loadcnt].src = "./bin/jkpk.gif";
+		console.log(loadcnt,imname);
+		loadcnt++;
+		cardimage.push(new Image());
+		cardimage[loadcnt].src = "./bin/jkpk.gif";
+		console.log(loadcnt,imname);
+		loadcnt++;
+		cardimage.push(new Image());
+		cardimage[loadcnt].src = "./bin/ovpk.gif";
+		console.log(loadcnt,imname);
+		loadcnt++;
+	}
+	
+	function strToDateOject(str) {
+		var d = new Date(str); //yyyy-mm-dd DD HH:mm:ss
+		var elapsed = d.getTime();
+		return elapsed;
+	}
+	
+	function show1() {
+		// 設定顏色
+		ctx2fillStyle = 'rgb(200, 200, 0)'
+		// 畫出矩形
+		ctx2.fillRect (10, 10, 55, 50)
+
+		// 再次設定顏色
+		ctx2.fillStyle = 'rgba(0, 0, 200, 0.75)'
+		// 畫出矩形
+		ctx2.fillRect (30, 30, 55, 50)
+
+		
+		// 將canvas 加入body
+		//document.body.appendChild(canvas)
+		
+	}
+	
+	function showpoker() {
+		
+		//img = new Image()
+		//img.src = ".\bin\bf03.gif"
+		//showCanvas(".\bin\bf03.gif");
+		
+		//var imgObject = new Image();
+		//var imgObject2 = new Image();
+		//var imgObject3 = new Image();
+		
+		//imgObject.src = "./bin/bf01.gif"
+		//imgObject2.src = "./bin/bf02.gif"
+		//imgObject3.src = "./bin/bf03.gif"
+		//ctx.drawImage(cardimage[0],0,40);
+		//ctx.drawImage(cardimage[1],40,0);
+		//ctx.drawImage(cardimage[2],80,40);
+		
+		//for(let i in had1){
+		//	cset = card_set.indexOf(parseInt(had1[i], 16))
+		//	ctx1.drawImage(cardimage[cset],40*i,40);
+		//}
+		
+		handshow(ctx1,had1,had1show);		
+		handshow(ctx2,had2,had2show);
+		handshow(ctx3,had3,had3show);
+		handshow(ctx4,had4,had4show);
+		
+		handshow(ctx11,had11,had11show);		
+		handshow(ctx12,had12,had12show);
+		handshow(ctx13,had13,had13show);
+		handshow(ctx14,had14,had14show);
+		
+		//cardimage[0].onload = function(){
+		//	ctx.drawImage(cardimage[0],0,40);
+		//}
+		
+		//cardimage[1].onload = function(){
+		//	ctx.drawImage(cardimage[1],40,0);
+		//}
+		
+		//cardimage[2].onload = function(){
+		//	ctx.drawImage(cardimage[2],80,40);
+		//}
+		//var imgObject2 = new Image();
+		//imgObject2.src = './bin/bf03.png';
+		//imgObject2.addEventListener('load',function(){
+		//  ctx.drawImage(imgObject2,0,0);
+		//})
+		//ctx.drawImage(img, 0, 0)
+		//document.body.appendChild(canvas)
+	}
+	
+	function handshow(cvboard,cshow,cflag){
+	
+		for(let i in cshow){
+			cset = card_set.indexOf(parseInt(cshow[i], 16))
+			if(cflag[i]==0){
+				cvboard.drawImage(cardimage[cset],40*i,20);
+			}else if (cflag[i]==1){
+				cvboard.drawImage(cardimage[cset],40*i,0);
+			}else if (cflag[i]==2){
+				cvboard.drawImage(cardimage[54],40*i,20);
+			}
+		}
+	
+	}
+	
+	
+	//=========================================
+	var tref="";
+
+	function reloadtime(){
+		let date = new Date();
+		let year = date.getFullYear();
+		let month = date.getMonth() + 1;
+		month = month < 10 ? '0' + month : month;
+		
+		let day = date.getDate();
+		day = day < 10 ? '0' + day : day;
+
+		let hour = date.getHours();
+		hour = hour < 10 ? '0' + hour : hour;
+		let minute = date.getMinutes();
+		minute = minute < 10 ? '0' + minute : minute;
+		let second = date.getSeconds();
+		second = second < 10 ? '0' + second : second;
+
+		$('#dayvalue').val(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
+	}
+		
+	$(document).ready(function () {
+		reloadtime();
+		Date();
+		loadcardimage();
+		
+		tref = setInterval(function(){
+			reloadtime();
+			
+		},3000);
+	});
+</script>
+	
+
+</body>
+</html>

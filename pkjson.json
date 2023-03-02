@@ -1,0 +1,47 @@
+PKGAMEJSON = {
+
+    "pkgametype":"A001",   << 暫定 排7
+    "table": {
+        "cardbuffer":[[],[],[],[]],
+        "waittime":20,
+        "activeplay":"u1"
+        "playloop":["u1","u2","u3","u4"],
+        "cardsetobj":cardobj
+    },
+    "user":{
+    
+        "u1": {
+            "type":"man",
+            "credit":1000,
+            "handcard":[0x01,0x10,0x1a,0x2b],
+            "hcardshowflag":[0,1,2,1]
+            "offcard":[0x18]
+        },
+    
+        "u2": {
+            "type":"AI",
+            "credit":1000,
+            "handcard":[0x01,0x10,0x1a,0x2b],
+            "hcardshowflag":[0,1,2,1]
+            "offcard":[0x18]
+        },
+    
+        "u3": {
+            "type":"AI",
+            "credit":1000,
+            "handcard":[0x01,0x10,0x1a,0x2b],
+            "hcardshowflag":[0,1,2,1]
+            "offcard":[0x18]
+        },
+    
+        "u4": {
+            "type":"AI",
+            "credit":1000,
+            "handcard":[0x01,0x10,0x1a,0x2b],
+            "hcardshowflag":[0,1,2,1]
+            "offcard":[0x18]
+        }
+    
+    },
+    "playlog":[[time,u1count,u2count,u3count,u4count,win,loos]]
+}

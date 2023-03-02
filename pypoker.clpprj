@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="D:\DIY_prj\pypoker_prj\pypoker\pypoker.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/D:/DIY_prj/pypoker_prj/pypoker]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/D:/DIY_prj/pypoker_prj/pypoker]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+  <PM_LANGUAGE><![CDATA[]]></PM_LANGUAGE>
+ </settings>
+ <removed value=";"/>
+ <added value=""/>
+ <lastopfiles>
+  <file name="D:\DIY_prj\pypoker_prj\pypoker\showpk3.html"/>
+  <lastactivefile name="D:\DIY_prj\pypoker_prj\pypoker\showpk3.html"/>
+ </lastopfiles>
+ <todoblock/>
+ <dbgurls/>
+ <lasttime value="1675936272"/>
+</project>

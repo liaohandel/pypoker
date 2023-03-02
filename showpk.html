@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Image</h2>
+<img src=".\bin\bf01.gif" alt="pkshow" width="124" height="180">
+<img src=".\bin\bf02.gif" alt="pkshow" width="124" height="180">
+<br>
+<canvas id="myCanvas"></canvas>
+
+<script>
+	//const canvas = document.createElement('canvas')
+	var canvas = document.getElementById('myCanvas');
+	const ctx = canvas.getContext('2d')
+
+	// 設定顏色
+	ctx.fillStyle = 'rgb(200, 200, 0)'
+	// 畫出矩形
+	ctx.fillRect (10, 10, 55, 50)
+
+	// 再次設定顏色
+	ctx.fillStyle = 'rgba(0, 0, 200, 0.75)'
+	// 畫出矩形
+	ctx.fillRect (30, 30, 55, 50)
+
+	// 將canvas 加入body
+	document.body.appendChild(canvas)
+</script>
+</body>
+</html>

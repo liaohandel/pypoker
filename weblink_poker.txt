@@ -1,0 +1,26 @@
+tt Web
+請推薦 介紹 python poker game 的連結網頁
+以下是一些介紹 Python 實現扑克遊戲的連結：
+
+#Python 製作扑克遊戲：https://blog.csdn.net/weixin_43955865/article/details/116313161
+#使用 Python 實現扑克遊戲：https://www.cnblogs.com/SmallDeer/p/12765786.html
+#Python 實現簡單的扑克遊戲：https://www.jianshu.com/p/ee9a9a5ed5a5
+#用 Python 打造簡單的扑克遊戲：https://zhuanlan.zhihu.com/p/297934582
+
+這些連結提供了不同級別的代碼實現和教程，您可以根據自己的需要選擇適合的連結。
+
+開發 Rust 語言，你可以使用 Visual Studio Code（VSC）作為開發環境。需要安裝以下幾項擴充套件以支援 Rust 語言：
+
+Rust (rls)
+rust-analyzer
+CodeLLDB
+這些套件可以在 Visual Studio Code 商店中搜尋並且安裝。
+
+
+在 Ubuntu 下建立 RAM Disk 的方法如下：
+
+使用终端命令行输入：sudo mkdir /mnt/ramdisk
+创建文件系统：sudo mount -t tmpfs -o size=512M tmpfs /mnt/ramdisk
+可以通过更改 size 参数来调整 RAM Disk 的大小。
+重启后 RAM Disk 的内容会丢失，因为 RAM Disk 是使用 RAM 作为存储介质的。
+注意：使用 RAM Disk 可以提高系统读写速度，但也会增加系统的内存使用量。
